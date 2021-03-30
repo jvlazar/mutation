@@ -1,19 +1,28 @@
 from pathlib import Path
 
-fileName = (input("What is the name of your input file? "))
-out = (input("What is the name of your output file? "))
+fileName = (input("What is the name of your input file? (enter with .txt) "))
+out = (input("What is the name of your output file? (enter with .txt) "))
 
 fName = open(fileName, "r")
 oName = open(out, "w")
 
 
-target = input("State the amino acid you are looking to delete: ")
-position = int(input("State the position of the amino acid to be deleted "))
+target = input("What amino acid do you want to delete?: ")
+target = target.upper() # converts input to uppercase
+position = int(input("What position do you want to delete?: "))
+
 count = 1
+char = fName.read(1)
+
+while True:
+    if char == ']':
+        char = fName.read(1)
+        break
+    else:
+        char = fName.read(1)
 
 
 while True: # loop indefinitely
-
     char = fName.read(1) # read the char 1 byte at a time
     if not char: # if the value of char is null, exit out of the loop
         break
@@ -27,8 +36,8 @@ while True: # loop indefinitely
         oName.write(char) # write the character to the output file
 
 
-    elif count == position and char == target: # if the count is the same as the position and the character is the target, do not write to output
-        print("The amino acid at 508 is " + char) # letting the user know that the aa is there
+    elif count == position and char == target:
+        print("The amino acid at " + str(position) + " is " + char) # letting the user know that the aa is there
         count = count + 1 # increasing count
 
 
