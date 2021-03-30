@@ -20,17 +20,21 @@ while True: # loop indefinitely
         break
 
     if char == ">": # if the file is in FASTA format read until you reach "]"
+        count = 1 # initialize count to 1 for each new organism
+        print("we are at " + str(count))
         while True:
             if char == "]":
+                oName.write(char) # write the character to the output file
                 char = fName.read(1)
                 break
             else:
+                oName.write(char) # write the character to the output file
                 char = fName.read(1)
 
     if count != position: # when not at the desired position, add 1 to count
         if char != "\n":
             count = count + 1
-            print("The position is " + str(count) + " " + char)
+            #print("The position is " + str(count) + " " + char)
         elif char == "\n": # if the character is a newline, don't change the count
             pass
 
