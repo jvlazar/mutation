@@ -89,4 +89,4 @@ try:
 
 except FileNotFoundError:
     print("File could not be opened")
-    quit
+    quit()
